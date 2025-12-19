@@ -2,49 +2,34 @@ package org.example;
 
 import java.util.Scanner;
 import static org.example.Game.IsEnd;
+import static org.example.Table.DrawTable;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        /*char[][] field = Table();
-        while(IsEnd(char[][] table)) {
-            Scanner scanner = new Scanner(System.in);
-            System.out.print(": ");
-            int x = scanner.nextInt();
-            int y = scanner.nextInt();
-
-        }*/
-
-        char[][] field = {
-                {' ', ' ', ' '},
-                {' ', ' ', ' '},
-                {' ', ' ', ' '}
-        };
-
-        for(int i = 0; i < 9; i++) {
+        Table field = new Table();
+        for (int i = 0; i < 9; i++) {
             Scanner scanner = new Scanner(System.in);
             System.out.print("X move: ");
-            int x = scanner.nextInt();
-            int y = scanner.nextInt();
-            field[x][y] = 'X';
-            for(int k = 0; k < 3; k++) {
-                for(int j = 0; j < 3; j++) {
-                    System.out.print(field[k][j] + " ");
-                }
-                System.out.println();
-            }
-            System.out.print("O move: ");
+            X x = new X();
             int x0 = scanner.nextInt();
             int y0 = scanner.nextInt();
-            field[x0][y0] = 'O';
+            x.getCoordinates(x0,y0);
+            field.WriteX(x);
+            field.getTable()[x.getX()][x.getY()] = 'X';
 
-            for(int k = 0; k < 3; k++) {
-                for(int j = 0; j < 3; j++) {
-                    System.out.print(field[k][j] + " ");
-                }
-                System.out.println();
-            }
+            DrawTable();
+
+            System.out.print("O move: ");
+            O o = new O();
+            int x1 = scanner.nextInt();
+            int y1 = scanner.nextInt();
+            o.getCoordinates(x1,y1);
+            field.WriteO(o);
+            field.getTable()[o.getX()][o.getY()] = 'O';
+
+            DrawTable();
         }
     }
 }
