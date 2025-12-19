@@ -1,8 +1,12 @@
 package org.example;
 
 public class Table {
-    final static int Size = 3;
+    private final static int Size = 3;
     private static char[][] table = new char[Size][Size];
+
+    public static int getSize() {
+        return Size;
+    }
 
     public static char[][] getTable() {
         return table;

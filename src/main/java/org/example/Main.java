@@ -9,6 +9,12 @@ public class Main {
     public static void main(String[] args) {
 
         Table field = new Table();
+        for (int p = 0; p < field.getSize(); p++) {
+            for (int q = 0; q < field.getSize(); q++) {
+                field.getTable()[p][q] = ' ';
+            }
+        }
+
         for (int i = 0; i < 9; i++) {
             Scanner scanner = new Scanner(System.in);
             System.out.print("X move: ");
