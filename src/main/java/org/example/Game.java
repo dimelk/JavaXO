@@ -1,11 +1,16 @@
 package org.example;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.*;
+
 public class Game {
 
-    private static int sumCrossX = 0;
-    private static int sumCrossY = 0;
+    private static List<Integer> CrossX = new ArrayList<>();
+    private static List<Integer> CrossY = new ArrayList();
 
-    private static int sumZeroX = 0;
-    private static int sumZeroY = 0;
+    private static List<Integer> ZeroX = new ArrayList();
+    private static List<Integer> ZeroY = new ArrayList();
 
     private static char winner = ' ';
 
@@ -16,29 +21,24 @@ public class Game {
     public static final char[] symbols = {'X', '0'};
     public static boolean isEnded() {
 
-        if (moves > 4) {
-            if ((sumCrossX % 3 == 0) && (sumCrossY % 3 == 0) || (sumZeroX % 3 == 0) && (sumZeroY % 3 == 0)) {
-                isEnded = true;
-            }
-        }
+        if (hasEquals(CrossX) || hasEquals(CrossY) || hasEquals(ZeroX) || hasEquals(ZeroY)) isEnded = true;
 
-        if (isEnded) return true;
-        else return false;
+        return isEnded;
     }
+
     public static void getCrossX(int x) {
-        sumCrossX += x;
+        CrossX.add(x);
     }
-
     public static void getCrossY(int y) {
-        sumCrossY += y;
+        CrossY.add(y);
     }
 
     public static void getZeroX(int x) {
-        sumZeroX += x;
+        ZeroX.add(x);
     }
 
     public static void getZeroY(int y) {
-        sumZeroY += y;
+        ZeroY.add(y);
     }
 
     public static boolean getIsEnded() {
@@ -59,5 +59,20 @@ public class Game {
 
     public static int getMoves() {
         return moves;
+    }
+
+    public static List<Integer> getSetX() {
+        return CrossX;
+    }
+
+    public static boolean hasEquals(List<Integer> x) {
+        Map<Integer, Integer> freaquency = new HashMap<>();
+        for (int i: x) {
+            freaquency.put(i, freaquency.getOrDefault(i, 0) + 1);
+        }
+        for(int value: freaquency.values()) {
+            if(value == 3) return true;
+        }
+        return false;
     }
 }

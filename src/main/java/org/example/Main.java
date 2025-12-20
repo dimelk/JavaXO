@@ -1,14 +1,16 @@
 package org.example;
 
-import java.util.Scanner;
+import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+
 
 import static org.example.Game.*;
-import static org.example.Game.isEnded;
 import static org.example.Table.DrawTable;
 
 public class Main {
 
-    public static void main(String[] args) {
+public static void main(String[] args) {
 
         Table field = new Table();
         for (int p = 0; p < field.getSize(); p++) {
@@ -33,6 +35,7 @@ public class Main {
             DrawTable();
             if (Game.getMoves() == field.getSize() * field.getSize()) {
                 System.out.println("Noone wins...");
+                whoWon(' ');
                 break;
             }
             whoWon('X');
@@ -52,6 +55,7 @@ public class Main {
             DrawTable();
             if (Game.getMoves() == field.getSize() * field.getSize()) {
                 System.out.println("Noone wins...");
+                whoWon(' ');
                 break;
             }
             whoWon('O');
@@ -59,11 +63,11 @@ public class Main {
             if (isEnded()) break;
         }
 
-
         if (Game.getWinner() == 'X') {
             System.out.println("Player 1 wins!");
         } else if (Game.getWinner() ==  'O') {
             System.out.println("Player 2 wins!");
         }
+
     }
 }
