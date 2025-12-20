@@ -68,6 +68,5 @@ public static void main(String[] args) {
         } else if (Game.getWinner() ==  'O') {
             System.out.println("Player 2 wins!");
         }
-
     }
 }
