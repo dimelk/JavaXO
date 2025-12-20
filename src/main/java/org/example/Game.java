@@ -7,6 +7,8 @@ public class Game {
     private static int sumZeroX = 0;
     private static int sumZeroY = 0;
 
+    private static char winner = ' ';
+
     private static boolean isEnded = false;
 
     private static int moves = 0;
@@ -15,7 +17,7 @@ public class Game {
     public static boolean isEnded() {
 
         if (moves > 4) {
-            if ((sumCrossX % 3 == 0) || (sumCrossY % 3 == 0) || (sumZeroX % 3 == 0) || (sumZeroY % 3 == 0)) {
+            if ((sumCrossX % 3 == 0) && (sumCrossY % 3 == 0) || (sumZeroX % 3 == 0) && (sumZeroY % 3 == 0)) {
                 isEnded = true;
             }
         }
@@ -45,5 +47,17 @@ public class Game {
 
     public static void incrMoves() {
         moves++;
+    }
+
+    public static void whoWon(char win) {
+        winner = win;
+    }
+
+    public static char getWinner() {
+        return winner;
+    }
+
+    public static int getMoves() {
+        return moves;
     }
 }

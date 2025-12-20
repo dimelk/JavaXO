@@ -1,6 +1,8 @@
 package org.example;
 
 import java.util.Scanner;
+
+import static org.example.Game.*;
 import static org.example.Game.isEnded;
 import static org.example.Table.DrawTable;
 
@@ -15,37 +17,53 @@ public class Main {
             }
         }
         int moves = 0;
-        while (!Game.getIsEnded()) {
+        while (!getIsEnded()) {
 
             Scanner scanner = new Scanner(System.in);
-            System.out.print("X move: ");
+            System.out.print("Player 1 (X) move: ");
             X x = new X();
             int x0 = scanner.nextInt();
             int y0 = scanner.nextInt();
-            Game.getCrossX(x0);
-            Game.getCrossY(y0);
+            getCrossX(x0);
+            getCrossY(y0);
             x.getCoordinates(x0,y0);
             field.WriteX(x);
             field.getTable()[x.getX()][x.getY()] = 'X';
-            Game.incrMoves();
+            incrMoves();
             DrawTable();
+            if (Game.getMoves() == field.getSize() * field.getSize()) {
+                System.out.println("Noone wins...");
+                break;
+            }
+            whoWon('X');
 
-            if (Game.isEnded()) break;
+            if (isEnded()) break;
 
-            System.out.print("O move: ");
+            System.out.print("Player 2 (O) move: ");
             O o = new O();
             int x1 = scanner.nextInt();
             int y1 = scanner.nextInt();
-            Game.getZeroX(x1);
-            Game.getZeroY(y1);
+            getZeroX(x1);
+            getZeroY(y1);
             o.getCoordinates(x1,y1);
             field.WriteO(o);
             field.getTable()[o.getX()][o.getY()] = 'O';
-            Game.incrMoves();
+            incrMoves();
             DrawTable();
+            if (Game.getMoves() == field.getSize() * field.getSize()) {
+                System.out.println("Noone wins...");
+                break;
+            }
+            whoWon('O');
 
-            if (Game.isEnded()) break;
+            if (isEnded()) break;
         }
-        System.out.println("game ended");
+
+
+        if (Game.getWinner() == 'X') {
+            System.out.println("Player 1 wins!");
+        } else if (Game.getWinner() ==  'O') {
+            System.out.println("Player 2 wins!");
+        }
     }
 }
