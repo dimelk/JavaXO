@@ -3,6 +3,7 @@ package org.example;
 import java.util.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 
 import static org.example.Game.*;
@@ -33,12 +34,13 @@ public static void main(String[] args) {
             field.getTable()[x.getX()][x.getY()] = 'X';
             incrMoves();
             DrawTable();
-            if (Game.getMoves() == field.getSize() * field.getSize()) {
+            whoWon('X');
+            if (isEnded()) break;
+            else if (Game.getMoves() == field.getSize() * field.getSize()) {
                 System.out.println("Noone wins...");
                 whoWon(' ');
                 break;
             }
-            whoWon('X');
 
             if (isEnded()) break;
 
@@ -53,14 +55,15 @@ public static void main(String[] args) {
             field.getTable()[o.getX()][o.getY()] = 'O';
             incrMoves();
             DrawTable();
-            if (Game.getMoves() == field.getSize() * field.getSize()) {
+            whoWon('O');
+
+            if (isEnded()) break;
+            else if (Game.getMoves() == field.getSize() * field.getSize()) {
                 System.out.println("Noone wins...");
                 whoWon(' ');
                 break;
             }
-            whoWon('O');
 
-            if (isEnded()) break;
         }
 
         if (Game.getWinner() == 'X') {

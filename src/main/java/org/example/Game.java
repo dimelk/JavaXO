@@ -22,6 +22,9 @@ public class Game {
     public static boolean isEnded() {
 
         if (hasEquals(CrossX) || hasEquals(CrossY) || hasEquals(ZeroX) || hasEquals(ZeroY)) isEnded = true;
+            if ((CrossX.stream().mapToInt(Integer::intValue).sum() == 3 && CrossY.stream().mapToInt(Integer::intValue).sum() == 3)) isEnded = true;
+
+            if ((ZeroX.stream().mapToInt(Integer::intValue).sum() == 3) && (ZeroY.stream().mapToInt(Integer::intValue).sum() == 3)) isEnded = true;
 
         return isEnded;
     }
@@ -63,6 +66,10 @@ public class Game {
 
     public static List<Integer> getSetX() {
         return CrossX;
+    }
+
+    public static List<Integer> getSetY() {
+        return CrossY;
     }
 
     public static boolean hasEquals(List<Integer> x) {
