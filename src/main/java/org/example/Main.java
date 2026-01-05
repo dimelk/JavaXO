@@ -19,27 +19,25 @@ public static void main(String[] args) {
 
             Scanner scanner = new Scanner(System.in);
             System.out.print("Player 1 (X) move: ");
-            X x = new X();
+            X x = new X();      // create new cross to put it on table
             int x0 = scanner.nextInt();
             int y0 = scanner.nextInt();
-            getCrossX(x0);
+            getCrossX(x0);      // write coordinates of it into his private data
             getCrossY(y0);
             x.getCoordinates(x0,y0);
-            field.WriteX(x);
-            field.getTable()[x.getX()][x.getY()] = 'X';
-            incrMoves();
-            whoWon('X');
+            field.WriteX(x);       // Put cross on game field
+            field.getTable()[x.getX()][x.getY()] = 'X';  // Set this symbol on field
+            incrMoves();  // plus one move
+            whoWon('X');  // last move is for winner (if he wins)
             Table.DrawTable();
-            if (isEnded()) break;
-            else if (Game.getMoves() == Table.GetSize() * Table.GetSize()) {
+            if (isEnded()) break;   // check for ending
+            else if (Game.getMoves() == Table.GetSize() * Table.GetSize()) {  // if field is full ends game with no winner
                 System.out.println("Noone wins...");
                 whoWon(' ');
                 break;
             }
 
-            if (isEnded()) break;
-
-            System.out.print("Player 2 (O) move: ");
+            System.out.print("Player 2 (O) move: "); // same actions for symbol of zero
             O o = new O();
             int x1 = scanner.nextInt();
             int y1 = scanner.nextInt();
@@ -61,7 +59,7 @@ public static void main(String[] args) {
         }
 
 
-        if (Game.getWinner() == 'X') {
+        if (Game.getWinner() == 'X') {  // checking if last symbol of winner was cross or zero
             System.out.println("Player 1 wins!");
         } else if (Game.getWinner() ==  'O') {
             System.out.println("Player 2 wins!");
