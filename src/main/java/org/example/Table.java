@@ -1,10 +1,13 @@
 package org.example;
 
-public class Table {
+import javax.swing.*;
+import java.awt.*;
+
+public class Table  {
     private final static int Size = 3;
     private static char[][] table = new char[Size][Size];
 
-    public static int getSize() {
+    public static int GetSize() {
         return Size;
     }
 
@@ -21,13 +24,13 @@ public class Table {
     }
 
     public static void DrawTable() {
-        for(int k = 0; k < 3; k++) {
-            for(int j = 0; j < 3; j++) {
+        for(int k = 0; k < Size; k++) {
+            for(int j = 0; j < Size; j++) {
                 System.out.print(table[k][j] + " | ");
             }
             System.out.println();
             System.out.println("----------|");
         }
-    }
 
+    }
 }

@@ -7,18 +7,13 @@ import java.util.Set;
 
 
 import static org.example.Game.*;
-import static org.example.Table.DrawTable;
 
 public class Main {
 
 public static void main(String[] args) {
 
         Table field = new Table();
-        for (int p = 0; p < field.getSize(); p++) {
-            for (int q = 0; q < field.getSize(); q++) {
-                field.getTable()[p][q] = ' ';
-            }
-        }
+
         int moves = 0;
         while (!getIsEnded()) {
 
@@ -33,10 +28,10 @@ public static void main(String[] args) {
             field.WriteX(x);
             field.getTable()[x.getX()][x.getY()] = 'X';
             incrMoves();
-            DrawTable();
             whoWon('X');
+            Table.DrawTable();
             if (isEnded()) break;
-            else if (Game.getMoves() == field.getSize() * field.getSize()) {
+            else if (Game.getMoves() == Table.GetSize() * Table.GetSize()) {
                 System.out.println("Noone wins...");
                 whoWon(' ');
                 break;
@@ -54,16 +49,15 @@ public static void main(String[] args) {
             field.WriteO(o);
             field.getTable()[o.getX()][o.getY()] = 'O';
             incrMoves();
-            DrawTable();
+            Table.DrawTable();
             whoWon('O');
 
             if (isEnded()) break;
-            else if (Game.getMoves() == field.getSize() * field.getSize()) {
+            else if (Game.getMoves() == Table.GetSize() * Table.GetSize()) {
                 System.out.println("Noone wins...");
                 whoWon(' ');
                 break;
             }
-
         }
 
         if (Game.getWinner() == 'X') {
