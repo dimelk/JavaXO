@@ -60,6 +60,7 @@ public static void main(String[] args) {
             }
         }
 
+
         if (Game.getWinner() == 'X') {
             System.out.println("Player 1 wins!");
         } else if (Game.getWinner() ==  'O') {
