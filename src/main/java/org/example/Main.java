@@ -14,6 +14,7 @@ public static void main(String[] args) {
 
         Table field = new Table();
 
+
         int moves = 0;
         while (!getIsEnded()) {
 
