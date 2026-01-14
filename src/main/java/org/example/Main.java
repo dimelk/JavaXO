@@ -14,6 +14,11 @@ public static void main(String[] args) {
 
         Table field = new Table();
 
+    for (int i = 0; i < Table.GetSize(); i++) {
+        for (int j = 0; j < Table.GetSize(); j++) {
+            field.SetSymbol(i,j,' ');
+        }
+    }
 
         int moves = 0;
         while (!getIsEnded()) {
