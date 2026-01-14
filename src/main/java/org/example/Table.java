@@ -35,6 +35,5 @@ public class Table  {
             System.out.println();
             System.out.println("----------|");
         }
-
     }
 }
