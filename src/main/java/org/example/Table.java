@@ -15,6 +15,10 @@ public class Table  {
         return table;
     }
 
+    public static void SetSymbol(int x, int y, char symbol) {
+        table[x][y] = symbol;
+    }
+
     public void WriteX(X x) {
         table[x.getX()][x.getY()] = 'X';
     }
